@@ -42,10 +42,6 @@ module Liquid
     
     class ConstantContactContactLists < ConstantContactBlock
       
-      # def initialize(tag_name, markup, tokens, context)
-      #   super        
-      # end
-      
       def render(context)
         context.stack do
           context['lists'] = lists
