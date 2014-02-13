@@ -6,11 +6,11 @@ require 'liquid_constant_contact/version'
 Gem::Specification.new do |spec|
   spec.name          = "liquid_constant_contact"
   spec.version       = LiquidConstantContact::VERSION
-  spec.authors       = ["Marc Reynolds"]
-  spec.email         = ["reynolds.marc@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
+  spec.authors       = ["Exodus Integrity Services, Inc.", "Marc Reynolds"]
+  spec.email         = ["marc@exodus.com.my"]
+  spec.description   = %q{ ConstantContact integration for Liquid}
+  spec.summary       = %q{ Allows information from the ConstantContact API to be output on a site running Liquid.}
+  spec.homepage      = "http://github.com/mrr728/liquid_constant_contact"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
@@ -28,10 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'mocha'
   spec.add_development_dependency 'factory_girl'
   spec.add_development_dependency 'pry'
-  # spec.add_development_dependency 'pry-doc'
-  # spec.add_development_dependency 'pry-stack_explorer'
   spec.add_development_dependency 'pry-debugger'
-  # spec.add_development_dependency 'ruby-debug19'
   spec.add_development_dependency 'hammertime19'
   spec.add_development_dependency 'dotenv'
   spec.add_development_dependency 'fakeredis'

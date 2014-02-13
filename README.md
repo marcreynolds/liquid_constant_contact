@@ -1,6 +1,6 @@
 # LiquidConstantContact
 
-TODO: Write a gem description
+Allows ConstantContact campaign information to be displayed on a site running Liquid.
 
 ## Installation
 
