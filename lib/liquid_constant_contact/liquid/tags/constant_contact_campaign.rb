@@ -1,5 +1,5 @@
 require 'benchmark'
-require 'JSON'
+require 'json'
 
 module Liquid
   module Tags    
