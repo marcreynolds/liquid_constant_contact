@@ -62,7 +62,7 @@ module Liquid
         node.class.name
       end)
 
-      puts information.insert(0, ' ' * (depth * 2))
+      # puts information.insert(0, ' ' * (depth * 2))
       if node.respond_to?(:nodelist)
         node.nodelist.each do |node|
           print_child node, depth + 1

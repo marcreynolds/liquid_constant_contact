@@ -5,26 +5,28 @@ module Liquid
   module Tags    
     class ConstantContactBlock < ::Liquid::Block
       
+      REDIS_CACHE_SECONDS ||= (30.minutes).seconds
+      
       protected
         def redis
           @@redis ||= ::Redis.new
         end
         
         def api
-          puts "retrieving CC API..."
+          # puts "retrieving CC API..."
           @api ||= ::ConstantContact::Api.new(api_key)
-          puts "CC API retrieved"
+          # puts "CC API retrieved"
           @api
         end
         
         def campaign
-          puts "retrieving CC Campaign"
+          # puts "retrieving CC Campaign"
           begin
           @campaign ||= api.get_email_campaign(access_token, @campaign_id)
           rescue ::RestClient::ResourceNotFound
             raise ::Liquid::StandardError.new("There was an error retrieving newsletter campaign information.  Please verify the campaign id and try again.")
           end
-          puts "CC Campaign Retrieved"
+          # puts "CC Campaign Retrieved"
           @campaign
         end
 
@@ -93,7 +95,7 @@ module Liquid
           return JSON.parse(cached) unless cached.nil?
           
           value = query_for_campaigns
-          redis.setex("campaigns", 30*60, value.to_json) #30-second expiration              
+          redis.setex("campaigns", REDIS_CACHE_SECONDS, value.to_json) #30-second expiration              
 
           value
         end
@@ -106,7 +108,7 @@ module Liquid
           while campaign_id = campaign_ids.shift
             campaign_info = api.get_email_campaign(access_token, campaign_id)
             selected << { "name" => campaign_info.name, "permalink_url" => campaign_info.permalink_url, "json" => campaign_info.to_json }
-            puts "#{selected.count} collected so far."
+            # puts "#{selected.count} collected so far."
           end
           
           selected          
